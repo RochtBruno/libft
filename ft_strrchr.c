@@ -6,7 +6,7 @@
 /*   By: btaveira <btaveira@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 11:39:57 by btaveira          #+#    #+#             */
-/*   Updated: 2023/10/19 14:16:09 by btaveira         ###   ########.fr       */
+/*   Updated: 2023/11/01 11:48:53 by btaveira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
-	int		i;
+	size_t	i;
 	char	x;
 
 	i = 0;

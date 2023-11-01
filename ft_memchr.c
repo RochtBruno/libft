@@ -6,7 +6,7 @@
 /*   By: btaveira <btaveira@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 13:34:12 by btaveira          #+#    #+#             */
-/*   Updated: 2023/10/27 10:48:46 by btaveira         ###   ########.fr       */
+/*   Updated: 2023/10/27 11:01:54 by btaveira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	*ft_memchr(const void *s, int c, size_t n)
 			return ((void *)str + i);
 		i++;
 	}
-	if(str[i] == x)
+	if (str[i] == x && i < n)
 		return ((void *)str + i);
 	return (NULL);
 }

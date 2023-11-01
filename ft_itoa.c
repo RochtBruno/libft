@@ -6,13 +6,13 @@
 /*   By: btaveira <btaveira@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 19:16:59 by btaveira          #+#    #+#             */
-/*   Updated: 2023/10/24 20:21:28 by btaveira         ###   ########.fr       */
+/*   Updated: 2023/10/27 14:20:12 by btaveira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static	size_t	get_nbr_len(long int nbr)
+static	size_t	ft_get_nbr_len(long int nbr)
 {
 	size_t	count_num;
 
@@ -36,8 +36,8 @@ char	*ft_itoa(int n)
 		return (ft_strdup("-2147483648"));
 	if (n == 0)
 		return (ft_strdup("0"));
-	str = malloc(sizeof(char) * (get_nbr_len(n) + 1));
-	index = get_nbr_len(n);
+	str = malloc(sizeof(char) * (ft_get_nbr_len(n) + 1));
+	index = ft_get_nbr_len(n);
 	if (!str)
 		return (NULL);
 	str[index--] = '\0';

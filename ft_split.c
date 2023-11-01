@@ -6,13 +6,13 @@
 /*   By: btaveira <btaveira@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 09:05:52 by btaveira          #+#    #+#             */
-/*   Updated: 2023/10/26 19:35:23 by btaveira         ###   ########.fr       */
+/*   Updated: 2023/10/27 15:29:01 by btaveira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	get_words(char *str, char sep)
+static size_t	ft_get_words(char *str, char sep)
 {
 	size_t	count_word;
 
@@ -33,48 +33,53 @@ static size_t	get_words(char *str, char sep)
 	return (count_word);
 }
 
-static	char	*ft_strncpy(char *dest, char *src, unsigned int n)
+static	char	*ft_get_string(char const *s, size_t *start, char sep)
 {
-	unsigned int	count;
+	size_t	index;
+	size_t	start_s;
+	size_t	total_len;
 
-	count = 0;
-	while ((src[count] != '\0') && (count < n))
-	{
-		dest[count] = src[count];
-		count ++;
-	}
-	while (count < n)
-	{
-		dest[count] = '\0';
-		count++;
-	}
-	return (dest);
+	index = 0;
+	start_s = *start;
+	while (s[start_s + index] && s[start_s + index] != sep)
+		index++;
+	total_len = (start_s + index) - start_s;
+	*start += index;
+	return (ft_substr(s, start_s, total_len));
+}
+
+static	char	**ft_free_all(char **ptr, int i_word)
+{
+	while (i_word >= 0)
+		free(ptr[i_word--]);
+	free(ptr);
+	return (NULL);
 }
 
 char	**ft_split(char const *s, char c)
 {
 	size_t	i_word;
-	size_t	len_word;
-	char	*start;
+	size_t	index;
 	char	**ptr;
 
-	ptr = malloc(sizeof(char *) * (get_words((char *)s, c) + 1));
-	if (!ptr || !s)
+	if (!s)
+		return (NULL);
+	ptr = malloc(sizeof(char *) * (ft_get_words((char *)s, c) + 1));
+	if (!ptr)
 		return (NULL);
 	i_word = 0;
-	while (*s)
+	index = 0;
+	while (s[index])
 	{
-		if (*s && *s != c)
+		while (s[index] == c)
+			index++;
+		if (s[index])
 		{
-			start = (char *)s;
-			while (*s && *s != c)
-				s++;
-			len_word = s - start;
-			ptr[i_word] = malloc(len_word + 1);
-			ft_strncpy(ptr[i_word], start, len_word);
-			ptr[i_word++][len_word] = '\0';
+			ptr[i_word] = ft_get_string(s, &index, c);
+			if (ptr[i_word] == NULL)
+				return (ft_free_all(ptr, (int)--i_word));
+			i_word++;
 		}
-		s++;
 	}
 	ptr[i_word] = NULL;
 	return (ptr);

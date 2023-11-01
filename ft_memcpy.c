@@ -6,7 +6,7 @@
 /*   By: btaveira <btaveira@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 13:57:01 by btaveira          #+#    #+#             */
-/*   Updated: 2023/10/27 10:47:17 by btaveira         ###   ########.fr       */
+/*   Updated: 2023/10/27 14:07:27 by btaveira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	size_t			i;
 	unsigned char	*dt;
 	unsigned char	*sc;
-	
+
 	dt = (unsigned char *)dest;
 	sc = (unsigned char *)src;
 	if (!dt && !sc)
