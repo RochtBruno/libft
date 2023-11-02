@@ -1,37 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: btaveira <btaveira@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/17 11:39:57 by btaveira          #+#    #+#             */
-/*   Updated: 2023/11/01 18:06:01 by btaveira         ###   ########.fr       */
+/*   Created: 2023/11/01 14:44:45 by btaveira          #+#    #+#             */
+/*   Updated: 2023/11/01 15:06:22 by btaveira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strrchr(const char *s, int c)
+t_list *ft_lstlast(t_list *lst)
 {
-	int		i;
-	char	x;
-
-	i = 0;
-	x = (char)c;
-	while (s[i])
-		i++;
-	while (i >= 0)
-	{
-		if (s[i] == x)
-			return ((char *)s + i);
-		i--;
-	}
-	return (NULL);
+	if(!lst)
+		return (NULL);
+	while(lst->next != NULL)
+		lst = lst->next;
+	return(lst);
 }
-/*#include <stdio.h>
-int	main(void)
-{
-	const char t[] = "abdfbff";
-	printf("%s\n",ft_strrchr(t,'b'));
-}*/

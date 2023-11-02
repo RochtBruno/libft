@@ -1,38 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: btaveira <btaveira@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/23 14:27:12 by btaveira          #+#    #+#             */
-/*   Updated: 2023/11/01 18:30:46 by btaveira         ###   ########.fr       */
+/*   Created: 2023/11/01 13:45:16 by btaveira          #+#    #+#             */
+/*   Updated: 2023/11/01 14:44:28 by btaveira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strtrim(char const *s1, char const *set)
+int	ft_lstsize(t_list *lst)
 {
-	char	*str;
-	size_t	len_s1;
+	int	i;
 
-	if (!s1)
-		return (NULL);
-	if (!set)
-		return (ft_strdup(s1));
-	while (*s1 && ft_strchr(set, *s1))
-		s1++;
-	len_s1 = ft_strlen(s1) - 1;
-	while (s1[len_s1] && ft_strchr(set, s1[len_s1]))
-		len_s1--;
-	str = ft_substr(s1, 0, len_s1 + 1);
-	return (str);
+	i = 0;
+	while(lst)
+	{
+		lst = lst->next;
+		i++;
+	}
+	return (i);
 }
 /*#include <stdio.h>
 int	main(void)
 {
-	char const s1[] = "f    casco camelo casco cachorro bumbum          ocsac    f";
-	char const set[] = "f";
-	printf("%s\n", ft_strtrim(s1,set));
+	t_list	*ptr;
+	t_list	*ptr2;
+	t_list	*ptr3;
+	ptr = ft_lstnew((void*)45);
+	ptr2 = ft_lstnew((void*)12);
+	ptr3 = ft_lstnew((void*)43);
+	ptr->next = ptr2;
+	ptr2->next = ptr3;
+	printf("%d\n",ft_lstsize(ptr3));
+	return (0);
 }*/

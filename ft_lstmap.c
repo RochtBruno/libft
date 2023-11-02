@@ -1,37 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: btaveira <btaveira@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/17 11:39:57 by btaveira          #+#    #+#             */
-/*   Updated: 2023/11/01 18:06:01 by btaveira         ###   ########.fr       */
+/*   Created: 2023/11/01 18:42:20 by btaveira          #+#    #+#             */
+/*   Updated: 2023/11/02 16:05:25 by btaveira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strrchr(const char *s, int c)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *),void (*del)(void *))
 {
-	int		i;
-	char	x;
-
-	i = 0;
-	x = (char)c;
-	while (s[i])
-		i++;
-	while (i >= 0)
+	t_list	*ptr;
+	t_list	*node;
+	//int	count_node;
+	
+	if (!f || !del)
+		return (NULL);
+	//count_node = ft_lstsize(lst);
+	//node = malloc(sizeof(t_list) *count_node);
+	while(lst)
 	{
-		if (s[i] == x)
-			return ((char *)s + i);
-		i--;
+		ptr = ft_lstnew(f(lst->content));
+		if (!ptr)
+		{
+			ft_lstclear(&node, del);
+			return (node);
+		}
+		ft_lstadd_back(&node,ptr);
+		lst = lst->next;
 	}
-	return (NULL);
+	return (node);
 }
-/*#include <stdio.h>
-int	main(void)
-{
-	const char t[] = "abdfbff";
-	printf("%s\n",ft_strrchr(t,'b'));
-}*/

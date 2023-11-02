@@ -1,37 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: btaveira <btaveira@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/17 11:39:57 by btaveira          #+#    #+#             */
-/*   Updated: 2023/11/01 18:06:01 by btaveira         ###   ########.fr       */
+/*   Created: 2023/11/01 17:26:41 by btaveira          #+#    #+#             */
+/*   Updated: 2023/11/01 18:09:08 by btaveira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strrchr(const char *s, int c)
-{
-	int		i;
-	char	x;
-
-	i = 0;
-	x = (char)c;
-	while (s[i])
-		i++;
-	while (i >= 0)
+void ft_lstadd_back(t_list **lst, t_list *new)
+{	
+	t_list	*ptr;
+	
+	if(lst != NULL)
 	{
-		if (s[i] == x)
-			return ((char *)s + i);
-		i--;
-	}
-	return (NULL);
+		if(*lst == NULL)
+			*lst = new;
+		else
+		{
+			ptr = ft_lstlast(*lst);
+			ptr->next = new;
+		}
+	}	
 }
-/*#include <stdio.h>
-int	main(void)
-{
-	const char t[] = "abdfbff";
-	printf("%s\n",ft_strrchr(t,'b'));
-}*/
