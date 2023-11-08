@@ -6,7 +6,7 @@
 /*   By: btaveira <btaveira@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:45:58 by btaveira          #+#    #+#             */
-/*   Updated: 2023/11/02 15:52:15 by btaveira         ###   ########.fr       */
+/*   Updated: 2023/11/02 16:42:55 by btaveira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-typedef	struct	s_list
+typedef struct s_list
 {
-	void	*content;
-	struct	s_list *next;
-}		t_list;
+	void			*content;
+	struct s_list	*next;
+}					t_list;
 
 int			ft_atoi(char *str);
 int			ft_isascii(int c);
@@ -62,7 +62,7 @@ char		*ft_strdup(const char *s);
 char		*ft_substr(char const *s, unsigned int start, size_t len);
 char		*ft_strjoin(char const *s1, char const *s2);
 char		**ft_split(char const *s, char c);
-t_list *ft_lstnew(void *content);
-t_list *ft_lstlast(t_list *lst);
-t_list *ft_lstmap(t_list *lst, void *(*f)(void *),void (*del)(void *));
+t_list		*ft_lstnew(void *content);
+t_list		*ft_lstlast(t_list *lst);
+t_list		*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 #endif

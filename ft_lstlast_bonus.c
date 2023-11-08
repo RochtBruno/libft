@@ -1,40 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstsize.c                                       :+:      :+:    :+:   */
+/*   ft_lstlast_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: btaveira <btaveira@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/01 13:45:16 by btaveira          #+#    #+#             */
-/*   Updated: 2023/11/01 14:44:28 by btaveira         ###   ########.fr       */
+/*   Created: 2023/11/01 14:44:45 by btaveira          #+#    #+#             */
+/*   Updated: 2023/11/02 16:34:55 by btaveira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_lstsize(t_list *lst)
+t_list	*ft_lstlast(t_list *lst)
 {
-	int	i;
-
-	i = 0;
-	while(lst)
-	{
+	if (!lst)
+		return (NULL);
+	while (lst->next != NULL)
 		lst = lst->next;
-		i++;
-	}
-	return (i);
+	return (lst);
 }
-/*#include <stdio.h>
-int	main(void)
-{
-	t_list	*ptr;
-	t_list	*ptr2;
-	t_list	*ptr3;
-	ptr = ft_lstnew((void*)45);
-	ptr2 = ft_lstnew((void*)12);
-	ptr3 = ft_lstnew((void*)43);
-	ptr->next = ptr2;
-	ptr2->next = ptr3;
-	printf("%d\n",ft_lstsize(ptr3));
-	return (0);
-}*/
